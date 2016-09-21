@@ -1,0 +1,27 @@
+#****************************************************
+velocity标签库
+date： 2016/09/09
+****************************************************#
+##首页标签
+#set($config="Asterisk后台管理配置")   
+#set($extend="扩展功能")   
+#set($SIP="SIP配置") 
+#set($meetme="会议配置")
+#set($meetme="会议配置")
+#set($Short="短息配置")
+##扩展功能标签
+#set($Template="模板配置")
+#set($add="新增")
+#****************************sip注册配置******************************#
+##配置表单
+#set($from="<form action='sip' method='post'>")
+#set($from-tail="</form>")
+#set($from-butten="<input type='submit' value='Submit'>")
+#set($obj=[{"key":"sip","value":"sipUtil.sip"},{"key":"secret","value":"sipUtil.secret"},{"key":"context","value":"sipUtil.context"}])
+#macro(sip $item)
+#foreach($item in $obj)
+$item.key<input type="text"/ name=$item.value>
+#end
+#end
+
+
