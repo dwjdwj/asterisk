@@ -20,8 +20,9 @@ import com.jfinal.asterisk.util.SipUtil;
  */
 public class SipDaoimpl { 
 //Asterisk注册sip账号
-	public static  SipService Sip(Object sipUtil,ManagerConnection managerConnection) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException{
-if(((SipUtil) sipUtil).getUsername()!=null&&((SipUtil) sipUtil).getSip()!=null){
+	public static  boolean Sip(Object sipUtil,ManagerConnection managerConnection ) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException{
+boolean sipstute=false;
+		if(((SipUtil) sipUtil).getUsername()!=null&&((SipUtil) sipUtil).getSip()!=null){
 		UpdateConfigAction muc = new UpdateConfigAction("sip.conf", "sip.conf", true); 
 		ManagerResponse originateResponse; 
 		muc.addCommand(muc.ACTION_NEWCAT, ((SipUtil) sipUtil).getUsername(),"type", "friend","" ); 
@@ -40,7 +41,10 @@ if(((SipUtil) sipUtil).getUsername()!=null&&((SipUtil) sipUtil).getSip()!=null){
 		muc.addCommand(muc.ACTION_APPEND, ((SipUtil) sipUtil).getUsername(), "calllimit",((SipUtil)sipUtil).getCalllimit(), null); 
 		muc.getReload(); 
 		originateResponse = managerConnection.sendAction(muc); 
-
+		System.out.println(originateResponse.getResponse()+":zhuangtol");
+		if(originateResponse.getResponse().equals("Success")){
+			sipstute=true;
+		}
 		CommandAction commandAction = new CommandAction("sip show users"); 
 		CommandResponse response= (CommandResponse) managerConnection.sendAction(commandAction); 
 		for (String line : response.getResult() ) 
@@ -48,8 +52,8 @@ if(((SipUtil) sipUtil).getUsername()!=null&&((SipUtil) sipUtil).getSip()!=null){
 		System.out.println(line); 
 		} 
 }
-
-			return null;
+System.out.println(sipstute+"状态");
+			return sipstute;
 	
 	}
 	 

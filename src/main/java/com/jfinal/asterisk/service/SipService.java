@@ -20,11 +20,11 @@ public static  Object _setAttr(SipUtil sipUtil ) throws IllegalStateException, I
 	
 	return AsteriskLogin.AsteriskManager(sipUtil);	
 }
-public static Object sipUtil(Object sipUtil, ManagerConnection managerConnection) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
+public static Object sipUtil(Object util, ManagerConnection managerConnection) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
 
-System.out.println(sipUtil+"------------------");
-System.out.println(sipUtil+":88"+managerConnection+":PmanagerConnection");
-	return SipDaoimpl.Sip(sipUtil, managerConnection);
+System.out.println(util+"------------------");
+System.out.println(util+":88"+managerConnection+":PmanagerConnection");
+	return SipDaoimpl.Sip(util, managerConnection);
 }
 
 }

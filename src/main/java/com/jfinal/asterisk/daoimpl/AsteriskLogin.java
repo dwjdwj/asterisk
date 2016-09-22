@@ -20,6 +20,7 @@ public class AsteriskLogin
 { 
 public static ManagerConnection managerConnection; 
 public static ManagerConnectionFactory factory; 
+
 public static Object AsteriskManager(Object Util) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
 //factory = new ManagerConnectionFactory("192.168.1.177",5038, "admin", "111");
 	managerConnection=null;
