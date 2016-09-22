@@ -15,24 +15,16 @@ import com.jfinal.asterisk.util.SipUtil;
 public class SipService {
 
 
-public static  Object _setAttr(SipUtil sipUtil ) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {	System.out.println(sipUtil);
-
-System.out.println("======================");
-
-	ManagerConnection managerConnection = null;
-
+public static  Object _setAttr(SipUtil sipUtil ) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
+	System.out.println(sipUtil);
+	
 	return AsteriskLogin.AsteriskManager(sipUtil);	
 }
-public static Object sipUtil(SipUtil sipUtil, ManagerConnection managerConnection) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
+public static Object sipUtil(Object sipUtil, ManagerConnection managerConnection) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
 
 System.out.println(sipUtil+"------------------");
 System.out.println(sipUtil+":88"+managerConnection+":PmanagerConnection");
 	return SipDaoimpl.Sip(sipUtil, managerConnection);
-}
-public static void main(String[] args) throws Exception 
-{ 
-	SipService s = new SipService();
-s._setAttr(null);
 }
 
 }

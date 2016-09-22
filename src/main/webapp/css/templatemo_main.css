@@ -70,7 +70,10 @@ img {
     border-width: 8px;
     text-align:center
 }
-
+.span_sip{
+	margin-left: 850px;
+    font-size: larger;
+}
 .extend-right
 {
     display: block;
@@ -87,7 +90,7 @@ img {
 {
     display: block;
     height: 600px;
-    width: 70%;
+    width:  72%;
     font-size: 12px;
  
     margin-left: 250px;

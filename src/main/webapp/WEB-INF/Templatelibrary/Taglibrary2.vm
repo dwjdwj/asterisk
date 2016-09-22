@@ -1,0 +1,82 @@
+#****************************************************
+velocity标签库
+date： 2016/09/09
+****************************************************#
+##首页标签
+#set($config="Asterisk后台管理配置")   
+#set($extend="扩展功能")   
+#set($SIP="SIP配置") 
+#set($meetme="会议配置")
+#set($meetme="会议配置")
+#set($Short="短息配置")
+##扩展功能标签
+#set($Template="模板配置")
+#set($add="新增")
+#****************************sip注册配置******************************#
+##配置表单
+#set($from="<form action='sip' method='post'>")
+#set($from-tail="</form>")
+#set($from-butten="<input type='submit' value='提交'>")
+#set($obj=[
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp用户名：","value":"sipUtil.username"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分机号：","value":"sipUtil.sip"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp密码 ：","value":"sipUtil.secret"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp类型：","value":"sipUtil.type"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp主机名    ：","value":"sipUtil.host"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp电话权限：","value":"sipUtil.context"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp忽略信息：","value":"sipUtil.nat"},
+{"key":"&nbsp&nbsp&nbsp&nbsp检查客户端：","value":"sipUtil.qualify"},
+{"key":"&nbsp&nbsp&nbsp重定向媒体：","value":"sipUtil.canreinvite"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp呼叫记录：","value":"sipUtil.accountcode"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp可接数量：","value":"sipUtil.pickupgroup"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp呼出数量：","value":"sipUtil.pickupgroup"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp所有通话：","value":"sipUtil.calllimit"},
+{"key":"&nbsp&nbsp&nbsp分机电话组：","value":"sipUtil.callgroup"}])
+#macro(sip $item )
+#foreach($item in $obj)
+#if($!{velocityCount} < 4 )
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;">$item.key</span>
+<input type="text"/ name=$item.value style="font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+#elseif($!{velocityCount} == 4 )
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;width: 122px;height: 20px;">$item.key</span>
+<select name="select" id="select_k1" style="width: 152px;height: 24px;font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+<option value=$item.value>friend </option>
+<option value=$item.value>peer</option>
+<option value=$item.value>user</option></select>
+#elseif($!{velocityCount} == 5 )
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;width: 122px;height: 20px;">$item.key</span>
+<select name="select" id="select_k1" style="width: 152px;height: 24px;font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+<option value=$item.value>dynamic</option>
+<option value=$item.value>hostname</option>
+<option value=$item.value>IPAddr</option></select>
+#elseif($!{velocityCount} == 6)
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;width: 122px;height: 20px;">$item.key</span>
+<select name="select" id="select_k1" style="width: 152px;height: 24px;font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+<option value=$item.value>friend </option>
+<option value=$item.value>user</option>
+<option value=$item.value>peer</option></select>
+#elseif($!{velocityCount} == 7)
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;width: 122px;height: 20px;">$item.key</span>
+<select name="select" id="select_k1" style="width: 152px;height: 24px;font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+<option value=$item.value>yes </option>
+<option value=$item.value>no</option></select>
+#elseif($!{velocityCount} == 8)
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;width: 122px;height: 20px;">$item.key</span>
+<select name="select" id="select_k1" style="width: 152px;height: 24px;font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+<option value=$item.value>yes </option>
+<option value=$item.value>no</option>
+<option value=$item.value>milliseconds</option></select>
+#elseif($!{velocityCount} == 9)
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;width: 122px;height: 20px;">$item.key</span>
+<select name="select" id="select_k1" style="width: 152px;height: 24px;font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+<option value=$item.value>update </option>
+<option value=$item.value>yes</option>
+<option value=$item.value>no</option>
+<option value=$item.value>nonat</option></select>
+#else
+<span style="font-size: large;margin-right:0px;ALIGN-CONTENT: center;">$item.key</span>
+<input type="text"/ name=$item.value style="font-family: inherit;border: ridge;font-size: inherit;line-height: inherit;margin-bottom: 40px;margin-right: 40px;ALIGN-CONTENT: center;">
+
+#end
+#end
+#end

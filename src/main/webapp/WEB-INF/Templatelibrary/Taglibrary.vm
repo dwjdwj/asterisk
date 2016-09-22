@@ -13,15 +13,71 @@ date： 2016/09/09
 #set($Template="模板配置")
 #set($add="新增")
 #****************************sip注册配置******************************#
-##配置表单
-#set($from="<form action='sip' method='post'>")
-#set($from-tail="</form>")
-#set($from-butten="<input type='submit' value='Submit'>")
-#set($obj=[{"key":"sip","value":"sipUtil.sip"},{"key":"secret","value":"sipUtil.secret"},{"key":"context","value":"sipUtil.context"}])
-#macro(sip $item)
+#macro(sip $item $from-css)
 #foreach($item in $obj)
-$item.key<input type="text"/ name=$item.value>
+#if($!{velocityCount} < 4 )
+$item.key
+<input type="text"/ name=$item.value " $from-css>
+#elseif($!{velocityCount} == 4 )
+$item.key
+<select $from-css name="$item.value" >
+<option name=$item.value>friend </option>
+<option value=$item.value>peer</option>
+<option name=$item.value>user</option></select>
+#elseif($!{velocityCount} == 5 )
+$item.key
+<select $from-css name="$item.value">
+<option name=$item.value>dynamic</option>
+<option name=$item.value>hostname</option>
+<option name=$item.value>IPAddr</option></select>
+#elseif($!{velocityCount} == 6)
+$item.key
+<select $from-css name="$item.value">
+<option name=$item.value>friend </option>
+<option name=$item.value>user</option>
+<option name=$item.value>peer</option></select>
+#elseif($!{velocityCount} == 7)
+$item.key
+<select $from-css name="$item.value" >
+<option name=$item.value>yes </option>
+<option name=$item.value>no</option></select>
+#elseif($!{velocityCount} == 8)
+$item.key
+<select $from-css name="$item.value">
+<option name=$item.value>yes </option>
+<option name=$item.value>no</option>
+<option name=$item.value>milliseconds</option></select>
+#elseif($!{velocityCount} == 9)
+$item.key
+<select $from-css name="$item.value">
+<option name=$item.value>update </option>
+<option name=$item.value>yes</option>
+<option name=$item.value>no</option>
+<option name=$item.value>nonat</option></select>
+#else
+$item.key
+<input type="text"/ name=$item.value $from-css">
 #end
 #end
-
-
+#end
+#set($from="<form action='sip' method='post'><div style='width: 665px;margin-top: -50px;'>")
+#set($from-tail="</div></form>")
+#set($from-css="style='width: 131px;margin-top: 40px;height: 22px;border: ridge;'")
+#set($from-butten="<input type='submit' value='提交'>")
+#set($obj=[
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp用户名：","value":"sipUtil.username"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分机号：","value":"sipUtil.sip"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp密码 ：","value":"sipUtil.secret"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp类型：","value":"sipUtil.type"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp主机名    ：","value":"sipUtil.host"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp电话权限：","value":"sipUtil.context"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp忽略信息：","value":"sipUtil.nat"},
+{"key":"&nbsp&nbsp&nbsp&nbsp检查客户端：","value":"sipUtil.qualify"},
+{"key":"&nbsp&nbsp&nbsp重定向媒体：","value":"sipUtil.canreinvite"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp呼叫记录：","value":"sipUtil.accountcode"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp可接数量：","value":"sipUtil.pickupgroup"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp呼出数量：","value":"sipUtil.pickupgroup"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp所有通话：","value":"sipUtil.calllimit"},
+{"key":"&nbsp&nbsp&nbsp分机电话组：","value":"sipUtil.callgroup"}])
+#set($from-sip="$from#sip($obj)$from-butten$from-tail")
+#****************************sip注册配置完成******************************#
