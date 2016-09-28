@@ -3,6 +3,10 @@ package com.jfinal.asterisk.util;
 import com.jfinal.plugin.activerecord.Model;
 
 public class SipUtil extends Model<SipUtil>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final SipUtil me = new SipUtil();
 private long ID;
 private String username;//用户名

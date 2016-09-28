@@ -3,6 +3,7 @@
 	<name>Asterisk-Jfinal</name>
 	<comment></comment>
 	<projects>
+		<project>asterisk-java-master</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

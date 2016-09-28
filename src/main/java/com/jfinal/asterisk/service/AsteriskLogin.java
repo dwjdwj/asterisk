@@ -5,7 +5,7 @@
 	 * @return 过滤后的字符串
 	 */
 
-package com.jfinal.asterisk.daoimpl;
+package com.jfinal.asterisk.service;
 import java.io.IOException; 
 
 import org.asteriskjava.manager.AuthenticationFailedException; 
@@ -21,7 +21,7 @@ public class AsteriskLogin
 public static ManagerConnection managerConnection; 
 public static ManagerConnectionFactory factory; 
 
-public static Object AsteriskManager(Object Util) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
+public  static Object AsteriskManager(Object Util,boolean sipstute) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
 //factory = new ManagerConnectionFactory("192.168.1.177",5038, "admin", "111");
 	managerConnection=null;
 	if(((SipUtil) Util).getUsername()!=null&&((SipUtil) Util).getSip()!=null){
@@ -31,7 +31,7 @@ managerConnection.login();
 System.out.println("登陆成功========================");
 	}
 
-return SipService.sipUtil(Util, managerConnection);
+return SipService.Sip(Util, managerConnection,sipstute);
 	
 }
 

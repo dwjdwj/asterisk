@@ -17,8 +17,8 @@ date： 2016/09/09
 #foreach($item in $obj)
 #if($!{velocityCount} < 4 )
 $item.key
-<input type="text"/ name=$item.value " $from-css>
-#elseif($!{velocityCount} == 4 )
+<input type="text"/ name=$item.value " $from-css value="$h">
+#elseif($!{velocityCount} == 4 )a
 $item.key
 <select $from-css name="$item.value" >
 <option name=$item.value>friend </option>
@@ -70,6 +70,7 @@ $item.key
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp密码 ：","value":"sipUtil.secret"},
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp类型：","value":"sipUtil.type"},
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp主机名    ：","value":"sipUtil.host"},
+
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp电话权限：","value":"sipUtil.context"},
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp忽略信息：","value":"sipUtil.nat"},
 {"key":"&nbsp&nbsp&nbsp&nbsp检查客户端：","value":"sipUtil.qualify"},
