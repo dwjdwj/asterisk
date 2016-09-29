@@ -22,8 +22,8 @@ public class JfinalConfig extends JFinalConfig {
 
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/hello",AsteriskSipController.class,"WEB-INF/");
-		me.add("/sip",SipController.class,"WEB-INF/");
+		me.add("/hello",AsteriskSipController.class,UrlConfig.INDEX);
+		me.add("/sip",SipController.class,UrlConfig.INDEX);
 	}
 	@Override
 	public void configConstant(Constants me) {
