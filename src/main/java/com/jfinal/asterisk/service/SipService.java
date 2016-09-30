@@ -18,17 +18,18 @@ import com.jfinal.asterisk.util.SipUtil;
 
 public class SipService  {
 	
-@SuppressWarnings("static-access")
-public  static  Object SipConfig(SipUtil sipUtil,boolean sipstute ) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
+/*@SuppressWarnings("static-access")
+public  static  Object SipConfig(SipUtil sipUtil) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
 	System.out.println(sipUtil);
 	AsteriskLogin service = Duang.duang(AsteriskLogin.class);
-	service.AsteriskManager(sipUtil,sipstute);
-	return sipstute;	
-}
-@SuppressWarnings("static-access")
-public static  boolean Sip(Object sipUtil,ManagerConnection managerConnection, boolean sipstute) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException{
 
-		if(((SipUtil) sipUtil).getUsername()!=null&&((SipUtil) sipUtil).getSip()!=null){
+	return service.AsteriskManager(sipUtil);
+}*/
+@SuppressWarnings("static-access")
+public static  String Sip(Object sipUtil,ManagerConnection managerConnection) /*throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException*/{
+
+		String sipstute =null ;
+	
 		UpdateConfigAction muc = new UpdateConfigAction("sip.conf", "sip.conf", true); 
 		ManagerResponse originateResponse; 
 		muc.addCommand(muc.ACTION_NEWCAT, ((SipUtil) sipUtil).getUsername(),"type", "friend","" ); 
@@ -44,23 +45,28 @@ public static  boolean Sip(Object sipUtil,ManagerConnection managerConnection, b
 		muc.addCommand(muc.ACTION_APPEND, ((SipUtil) sipUtil).getUsername(), "callgroup", ((SipUtil)sipUtil).getCallgroup(), null); 
 		muc.addCommand(muc.ACTION_APPEND,((SipUtil) sipUtil).getUsername(), "pickupgroup", ((SipUtil)sipUtil).getPickupgroup(), null); 
 		muc.addCommand(muc.ACTION_APPEND, ((SipUtil) sipUtil).getUsername(),"setvar", ((SipUtil)sipUtil).getSetvar(), null); 
-		muc.addCommand(muc.ACTION_APPEND, ((SipUtil) sipUtil).getUsername(), "calllimit",((SipUtil)sipUtil).getCalllimit(), null); 
+		muc.addCommand(muc.ACTION_APPEND, ((SipUtil) sipUtil).getUsername(), "calllimit",((SipUtil)sipUtil).getCalllimit(), null);
 		muc.getReload(); 
-		originateResponse = managerConnection.sendAction(muc); 
-		System.out.println(originateResponse.getResponse()+":zhuangtol");
-		if(originateResponse.getResponse().equals("Success")){
-			sipstute=true;
-		}
-		CommandAction commandAction = new CommandAction("sip show users"); 
-		CommandResponse response= (CommandResponse) managerConnection.sendAction(commandAction); 
-		for (String line : response.getResult() ) 
-		{ 
-		System.out.println(line); 
-		} 
-}
-System.out.println(sipstute+"状态");
-			return sipstute;
+		try {
+			originateResponse = managerConnection.sendAction(muc);
+			System.out.println(originateResponse.getResponse()+":我草了吼了");
+			sipstute=originateResponse.getResponse();
+				
+			CommandAction commandAction = new CommandAction("sip show users"); 
+			CommandResponse response= (CommandResponse) managerConnection.sendAction(commandAction); 
+			for (String line : response.getResult() ) 
+			{ 
+			System.out.println(line); 
+			} 
 	}
+		catch (IllegalArgumentException | IllegalStateException | IOException | TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	//System.out.println(originateResponse.getResponse()+":zhuangtol");
 
+
+		return sipstute;
+} 
 
 }

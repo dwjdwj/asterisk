@@ -17,53 +17,53 @@ date： 2016/09/09
 #foreach($item in $obj)
 #if($!{velocityCount} < 4 )
 $item.key
-<input type="text"/ name="$item.value" id="$item.value" $from-css>
+<input type="text"/ name=$item.value " $from-css>
 #elseif($!{velocityCount} == 4 )
 $item.key
 <select $from-css name="$item.value" >
-<option name=$item.value id="$item.value">friend </option>
-<option value=$item.value id="$item.value">peer</option>
-<option name=$item.value id="$item.value">user</option></select>
+<option name=$item.value>friend </option>
+<option value=$item.value>peer</option>
+<option name=$item.value>user</option></select>
 #elseif($!{velocityCount} == 5 )
 $item.key
 <select $from-css name="$item.value">
-<option name=$item.value id="$item.value">dynamic</option>
-<option name=$item.value id="$item.value">hostname</option>
-<option name=$item.value id="$item.value">IPAddr</option></select>
+<option name=$item.value>dynamic</option>
+<option name=$item.value>hostname</option>
+<option name=$item.value>IPAddr</option></select>
 #elseif($!{velocityCount} == 6)
 $item.key
 <select $from-css name="$item.value">
-<option name=$item.value id="$item.value">friend </option>
-<option name=$item.value id="$item.value">user</option>
-<option name=$item.value id="$item.value">peer</option></select>
+<option name=$item.value>friend </option>
+<option name=$item.value>user</option>
+<option name=$item.value>peer</option></select>
 #elseif($!{velocityCount} == 7)
 $item.key
 <select $from-css name="$item.value" >
-<option name=$item.value id="$item.value">yes </option>
-<option name=$item.value id="$item.value">no</option></select>
+<option name=$item.value>yes </option>
+<option name=$item.value>no</option></select>
 #elseif($!{velocityCount} == 8)
 $item.key
 <select $from-css name="$item.value">
-<option name=$item.value id="$item.value">yes </option>
-<option name=$item.value id="$item.value">no</option>
-<option name=$item.value id="$item.value">milliseconds</option></select>
+<option name=$item.value>yes </option>
+<option name=$item.value>no</option>
+<option name=$item.value>milliseconds</option></select>
 #elseif($!{velocityCount} == 9)
 $item.key
 <select $from-css name="$item.value">
-<option name=$item.value id="$item.value">update </option>
-<option name=$item.value id="$item.value">yes</option>
-<option name=$item.value id="$item.value">no</option>
-<option name=$item.value id="$item.value">nonat</option></select>
+<option name=$item.value>update </option>
+<option name=$item.value>yes</option>
+<option name=$item.value>no</option>
+<option name=$item.value>nonat</option></select>
 #else
 $item.key
-<input type="text"/ name=$item.value id="$item.value" $from-css">
+<input type="text"/ name=$item.value $from-css">
 #end
 #end
 #end
-#set($from="<div style='width: 665px;margin-top: -50px;'>")
-#set($from-tail="</div>")
+#set($from="<form action='sip' method='post'><div style='width: 665px;margin-top: -50px;'>")
+#set($from-tail="</div></form>")
 #set($from-css="style='width: 131px;margin-top: 40px;height: 22px;border: ridge;'")
-#set($from-butten="<div onclick='tijao()'class='visited'><span>添加</span></div>")
+#set($from-butten="<input type='submit' value='提交'>")
 #set($obj=[
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp用户名：","value":"sipUtil.username"},
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分机号：","value":"sipUtil.sip"},
@@ -77,8 +77,7 @@ $item.key
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp呼叫记录：","value":"sipUtil.accountcode"},
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp可接数量：","value":"sipUtil.pickupgroup"},
 {"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp呼出数量：","value":"sipUtil.pickupgroup"},
-{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp电话组：","value":"sipUtil.calllimit"},
-{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp所有通话：","value":"sipUtil.setvar"},
+{"key":"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp所有通话：","value":"sipUtil.calllimit"},
 {"key":"&nbsp&nbsp&nbsp分机电话组：","value":"sipUtil.callgroup"}])
 #set($from-sip="$from#sip($obj)$from-butten$from-tail")
 #****************************sip注册配置完成******************************#

@@ -21,17 +21,14 @@ public class AsteriskLogin
 public static ManagerConnection managerConnection; 
 public static ManagerConnectionFactory factory; 
 
-public  static Object AsteriskManager(Object Util,boolean sipstute) throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
+public  static ManagerConnection AsteriskManager() throws IllegalStateException, IOException, AuthenticationFailedException, TimeoutException {
 //factory = new ManagerConnectionFactory("192.168.1.177",5038, "admin", "111");
-	managerConnection=null;
-	if(((SipUtil) Util).getUsername()!=null&&((SipUtil) Util).getSip()!=null){
-	factory = new ManagerConnectionFactory("114.112.153.70",5038, "admin", "111");
+	factory = new ManagerConnectionFactory("192.168.1.246",5038, "admin", "111");
 managerConnection = factory.createManagerConnection(); 
 managerConnection.login();
 System.out.println("登陆成功========================");
-	}
 
-return SipService.Sip(Util, managerConnection,sipstute);
+return managerConnection;
 	
 }
 
