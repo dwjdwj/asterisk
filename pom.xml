@@ -25,10 +25,11 @@
         </exclusions>
     </dependency>
     <dependency>
-        <groupId>com.jfinal</groupId>
-        <artifactId>jfinal</artifactId>
-        <version>2.2</version>
-    </dependency>
+    <groupId>com.jfinal</groupId>
+    <artifactId>jfinal</artifactId>
+    <version>2.2</version>
+</dependency>
+
    
    
     <dependency>
@@ -63,11 +64,24 @@
 
 
 <!-- 如果上面jar包引入错误可使用以下备用1.0版本 -->
-<!-- <dependency>
+<dependency>
     <groupId>org.asteriskjava</groupId>
     <artifactId>asterisk-java</artifactId>
     <version>1.0.0-final</version>
-</dependency> -->
+</dependency>
+
  </dependencies> 
-   
+ 
+   <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>1.7</source>
+              <target>1.7</target>
+            </configuration>
+      </plugin>
+    </plugins>
+ </build>
 </project>
